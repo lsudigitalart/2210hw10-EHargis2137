@@ -1,10 +1,11 @@
 var pa = [];
-var bat, pinata, candy1, candy2, candy3, candy4, candy5, candy6;
+var bat, batrotated, pinata, candy1, candy2, candy3, candy4, candy5, candy6;
 var candy;
 
 function preload(){
   imageMode(CENTER);
   bat = loadImage('images/bat.png');
+  batrotated = loadImage('images/batrotated.png');
   pinata = loadImage('images/pinata.png');
   candy1 = loadImage('images/candy1.png');
   candy2 = loadImage('images/candy2.png');
@@ -28,21 +29,20 @@ function draw(){
     pa[i].move();
   }
   if(mouseIsPressed){
-    rotate(-PI/3);
-    image(bat, mouseX, mouseY, 40, 200);
+    image(batrotated, mouseX, mouseY, 220, 180);
   } else{
-    image(bat, mouseX, mouseY, 40, 200);
+    image(bat, mouseX, mouseY, 50, 260);
   }
 }
 
 function mouseReleased(){
-  pa[pa.length] = new Particle(width/2-30, height/2-50);
-  pa[pa.length] = new Particle(width/2-30, height/2-50);
-  pa[pa.length] = new Particle(width/2-30, height/2-50);
-  pa[pa.length] = new Particle(width/2-30, height/2-50);
+  pa[pa.length] = new Particle(width/2-30, height/2-50, random(0,6));
+  pa[pa.length] = new Particle(width/2-30, height/2-50, random(0,6));
+  pa[pa.length] = new Particle(width/2-30, height/2-50, random(0,6));
+  pa[pa.length] = new Particle(width/2-30, height/2-50, random(0,6));
 }
 
-function Particle(tempX, tempY){
+function Particle(tempX, tempY, picker){
   this.posX = tempX;
   this.posY = tempY;
 
@@ -70,7 +70,7 @@ function Particle(tempX, tempY){
 
   }
 
-  this.display = function(){
+  this.display = function picker(){
     candy = random(0,6);
 
     if(candy > 0 && candy < 1){
