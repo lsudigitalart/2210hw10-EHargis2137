@@ -36,15 +36,16 @@ function draw(){
 }
 
 function mouseReleased(){
-  pa[pa.length] = new Particle(width/2-30, height/2-50, random(0,6));
-  pa[pa.length] = new Particle(width/2-30, height/2-50, random(0,6));
-  pa[pa.length] = new Particle(width/2-30, height/2-50, random(0,6));
-  pa[pa.length] = new Particle(width/2-30, height/2-50, random(0,6));
+  pa[pa.length] = new Particle(width/2-30, height/2-50, int(random(0,6)));
+  pa[pa.length] = new Particle(width/2-30, height/2-50, int(random(0,6)));
+  pa[pa.length] = new Particle(width/2-30, height/2-50, int(random(0,6)));
+  pa[pa.length] = new Particle(width/2-30, height/2-50, int(random(0,6)));
 }
 
 function Particle(tempX, tempY, picker){
   this.posX = tempX;
   this.posY = tempY;
+  this.candy = picker;
 
   this.vx = random(-10, 10);
   this.vy = random(-15, 15);
@@ -71,24 +72,24 @@ function Particle(tempX, tempY, picker){
   }
 
   this.display = function picker(){
-    candy = random(0,6);
+    
 
-    if(candy > 0 && candy < 1){
+    if(this.candy == 0){
       image(candy1, this.posX, this.posY, 60, 40);
     }
-    if(candy > 1 && candy < 2){
+    if(this.candy == 1){
       image(candy2, this.posX, this.posY, 60, 40);
     }
-    if(candy > 2 && candy < 3){
+    if(this.candy == 2){
       image(candy3, this.posX, this.posY, 60, 40);
     }
-    if(candy > 3 && candy < 4){
+    if(this.candy == 3){
       image(candy4, this.posX, this.posY, 60, 40);
     }
-    if(candy > 4 && candy < 5){
+    if(this.candy == 4){
       image(candy5, this.posX, this.posY, 60, 40);
     }
-    if(candy > 5 && candy < 6){
+    if(this.candy == 5){
       image(candy6, this.posX, this.posY, 60, 40);
     }
   }
